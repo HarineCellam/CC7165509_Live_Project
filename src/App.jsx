@@ -1,5 +1,6 @@
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import EditStudent from './components/EditStudent';
 import AddStudent from './pages/AddStudent';
 import Home from './pages/Home';
 
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home/>} />
               <Route path='/add' element={<AddStudent />}/>
+              <Route path='/edit/:id' element={<EditStudent />}/>
             </Routes>
           </div>
         </main>

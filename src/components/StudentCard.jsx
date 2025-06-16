@@ -1,4 +1,7 @@
-function StudentCard({student}){
+import { useNavigate } from "react-router-dom";
+
+function StudentCard({student, onDelete}){
+    const navigate = useNavigate();
     return (
         <div className="bg-white shadow-md rounded-xl p-4 text-gray-800">
             <h2 className="text-xl font-semibold">{student.name}</h2>
@@ -11,6 +14,10 @@ function StudentCard({student}){
             <p>
                 <strong>Email:</strong> {student.email}
             </p>
+            <div className="mt-4 flex gap-3 justify-center">
+                <button onClick={() => navigate(`edit/${student.id}`)} className="bg-stone-900 text-white px-3 py-1 rounded">Edit</button>
+                <button onClick={() => onDelete(student.id)} className="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+            </div>
         </div>
     )
 }
