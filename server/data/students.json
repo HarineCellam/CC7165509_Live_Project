@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "name": "Raghu",
+    "roll": "3122225001021",
+    "department": "IT",
+    "email": "raghu@gmail.com",
+    "section": "A",
+    "id": 1750137146778
+  },
+  {
+    "name": "Barath",
+    "roll": "3122225001023",
+    "department": "CSE",
+    "email": "barath@gmail.com",
+    "section": "A",
+    "id": 1750137235962
+  },
+  {
+    "name": "Varun",
+    "roll": "3122225001024",
+    "department": "CSE",
+    "email": "varun@gmail.com",
+    "section": "A",
+    "id": 1750137254476
+  },
+  {
+    "name": "Saran",
+    "roll": "3122225001024",
+    "department": "CSE",
+    "email": "saran@gmail.com",
+    "section": "A",
+    "id": 1750137908690
+  }
+]
