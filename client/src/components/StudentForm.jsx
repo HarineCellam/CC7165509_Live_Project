@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function StudentForm({ onAdd, initialData }) {
     const [form, setForm] = useState({
@@ -8,6 +9,8 @@ function StudentForm({ onAdd, initialData }) {
         email: "",
         section: "A",
     })
+
+    const navigate = useNavigate();
 
     useEffect(() => {
       if (initialData) setForm(initialData);
@@ -20,19 +23,29 @@ function StudentForm({ onAdd, initialData }) {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!form.name || !form.roll)
           return alert("Name and Roll are required");
-        onAdd({ ...form, id: initialData?.id || Date.now() });
-        setForm({
-            name: "",
-            roll: "",
-            department: "",
-            email: "",
-            section: "A",
-        });
-    }
+        const method = initialData ? 'PUT' : 'POST';
+        const url = initialData ? `http://localhost:5000/api/students/${initialData.id}` : "http://localhost:5000/api/students";
+        try{
+          const response = await fetch(url, {
+            method,
+            headers: {
+              'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(form),
+          });
+          if(response.status === 201 || response.status === 200){
+            navigate('/');
+          }
+        }
+        catch (error){
+          console.error("Error Submitting the form: ", error);
+          alert("Failed to submit form. Please try again.");
+        }
+    };
 
     return (
       <form
